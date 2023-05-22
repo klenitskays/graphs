@@ -244,7 +244,7 @@ GaveFrom.$to_id
 WHERE Book1.name = N'Мастер и Маргарита'
 
 
-
+--кому была отдана книга "Мастер и Маргарита"
 SELECT Book1.name + N' отдал ' + Book2.name AS Level1
  , Book2.name + N' отдал ' + Book3.name AS Level2
 FROM Book AS Book1
