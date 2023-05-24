@@ -226,7 +226,7 @@ VALUES ((SELECT $node_id FROM Book WHERE ID = 1),
  (SELECT $node_id FROM Library WHERE ID = 10), 9);
 
 
- 
+ --кому была отдана книга "Отцы и дети"
  SELECT Book1.name
  , Book2.name AS [book name]
 FROM Book AS Book1
@@ -234,7 +234,7 @@ FROM Book AS Book1
  , Book AS Book2
 WHERE MATCH(Book1-(GaveFrom)->Book2)
  AND Book1.name = N'Отцы и дети';
-
+--кому была отдана книга "Мастер и Маргарита"
  SELECT Book1.name
  , Book2.name AS[book name]
 FROM Book AS Book1
@@ -244,7 +244,7 @@ GaveFrom.$to_id
 WHERE Book1.name = N'Мастер и Маргарита'
 
 
---кому была отдана книга "Мастер и Маргарита"
+--кому были отданы книги
 SELECT Book1.name + N' отдал ' + Book2.name AS Level1
  , Book2.name + N' отдал ' + Book3.name AS Level2
 FROM Book AS Book1
@@ -255,7 +255,7 @@ FROM Book AS Book1
 WHERE MATCH(Book1-(GaveFrom1)->Book2-(GaveFrom2)->Book3)
  AND Book1.name = N'Горе от ума';
 
- 
+ --Вывести 
 SELECT Book2.name AS book
  , Library.name AS library
  , Photocoped.photocoped
@@ -267,7 +267,7 @@ FROM Book AS book1
 WHERE MATCH(book1-(GaveFrom)->book2-(Photocoped)->Library)
  AND book1.name = N'Война и мир';
 
- 
+ --вывести
  SELECT Book2.id AS book
  , Library.id AS library
  , Photocoped.photocoped
